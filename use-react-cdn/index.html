@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            state = {
+                title: 'My New Title',
+                dt: new Date()
+            }
+            handleClick = (e) => {
+                this.setState({
+                    title: 'Javascript is tricky'
+                })
+            }
+            handleOnMouseOver = (e) => {
+                console.log(this.state);
+            }
+            handleNameChange = (e) => {
+                this.setState({
+                    title: e.target.value
+                });
+            }
+            handleFormSubmit = (e) => {
+                e.preventDefault();
+                console.log(this.state);
+            }
+            render() {
+                const title = "My Title";
+
+                return (
+                    <div className="app-content">
+                        <h1> 
+                            {this.state.title} 
+                        </h1>
+                        <p>
+                            {this.state.dt.toLocaleDateString()}
+                        </p>
+                        <button onMouseOver={this.handleOnMouseOver} onClick={this.handleClick}>Click Me</button>
+                    
+                        <form onSubmit={this.handleFormSubmit}>
+                            <input type='text' onChange={this.handleNameChange} />
+                            <button>Submit</button>
+                        </form>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+</body>
+
+</html>
