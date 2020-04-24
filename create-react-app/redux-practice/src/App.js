@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ListItems from './components/ListItems'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component {
+  render() {
+    const items = [
+      {id: 1, name: 'Nicole'},
+      {id:2, name: 'Henry'},
+      {id:3, name: 'Bob'}
+    ];
+
+    return (
+      <div className="App">
+        <h1>Redux Practice</h1>
+        <ListItems items={items} />
+      </div>
+      
+    );
+  }
+};
 
 export default App;
