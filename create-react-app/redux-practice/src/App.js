@@ -1,50 +1,27 @@
 import React from 'react';
-import ListItems from './components/ListItems'
-import UserForm from './forms/UserForm'
+import { BrowserRouter, Route } from 'react-router-dom';
+import Todos from './routes/Todos';
+import Home from './routes/Home';
+import About from './routes/About';
+import Contact from './routes/Contact';
+import NavBar from './components/NavBar';
+
+
 
 class App extends React.Component {
-  state = {
-    items: [
-      {id: 1, name: 'Nicole', age: 38},
-      {id:2, name: 'Henry', age: 18},
-      {id:3, name: 'Bob', age: 10}
-    ]
-  }
-
-  handleSubmit = (item) => {
-    console.log(`The item is ${JSON.stringify(item)}`);
-
-    // this.setState((state, props) => ({
-    //     counter: state.counter + props.increment
-    // }));
-
-    let myArr = [...this.state.items, item];
-    // const myArr = this.state.items;
-    // myArr.push(item);
-    this.setState({items: myArr});
-  }
-
-  handleDeleteItem = (id) => {
-    console.log(`I am deleting id ${id}`);
-    const items = this.state.items.filter(item => {
-      return parseInt(item.id) !== parseInt(id);
-    });
-    this.setState({
-      items: items
-    })
-  }
-
   render() {
+    console.log('App did render');
     return (
-      <div className="App">
-        <h1>Redux Practice</h1>
-        <ListItems onDelete={this.handleDeleteItem} items={this.state.items} />
+        <BrowserRouter>
+            <div className="container">
+                <NavBar />
+            </div>   
+            <Route exact path='/' component={Home} />
+            <Route path='/about' component={About} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/todos' component={Todos} />
 
-        <div>
-          <UserForm onSubmit={this.handleSubmit} />
-        </div>
-      </div>
-      
+        </BrowserRouter>
     );
   }
 };
