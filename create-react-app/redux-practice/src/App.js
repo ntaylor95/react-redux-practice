@@ -12,6 +12,7 @@ import Post from './routes/Post';
 class App extends React.Component {
   render() {
     console.log('App did render');
+    console.log('This is a test');
     return (
         <BrowserRouter>
             <div className="container">
